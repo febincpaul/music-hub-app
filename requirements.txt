@@ -9,3 +9,4 @@ flask_caching
 redis
 mysql.connector
 nltk
+gunicorn==20.1.0
