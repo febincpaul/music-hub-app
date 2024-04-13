@@ -1,0 +1,95 @@
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='assets-home/css/style.css') }}"> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>REGISTER AND LOGIN</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<!--<style>
+.icon{ font-size:32px;
+      }
+</style>-->
+
+
+
+</head>
+<!--<div align="right">
+<a href="../homepage/index.html" class="icon" style="color:#03F"> <i class="fa fa-home"></i></a>
+</div>
+<br>-->
+
+<body>
+
+	<!-- partial:index.partial.html -->
+	<div class="section-heading style-2">
+		<a href="{{ url_for('login') }}" class="nav-brand"><img
+				src="{{ url_for('static', filename='assets-home/img/core-img/logo3.png') }}" alt=""></a>
+	</div>
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<!--<form action="#">-->
+			<form action="{{ url_for('register') }}" method="POST">
+				<br>
+				<h1>Create Account</h1>
+				<div class="social-container">
+					<!--<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+					<a href="{{ url_for('homepage') }}" class="social"><i class="fa fa-home"></i></a>
+				</div>
+				<span>or use your email for registration</span>
+				<input type="text" name="txt_name" id="txt_name" required autocomplete="off" placeholder="Name" />
+				<input type="email" name="txt_email" id="txt_email" required autocomplete="off" placeholder="Email" />
+				<input type="tel" name="txt_number" id="txt_number" required autocomplete="off" pattern="[0-9]{10}"
+					required title="Please enter a 10-digit phone number" placeholder="Contact no:" />
+				<input type="password" name="txt_pass" id="txt_pass" id="txt_pass" required="required"
+					autocomplete="off" placeholder="Password" />
+				<input type="password" name="txt_cpass" id="txt_cpass" id="txt_cpass" required="required"
+					autocomplete="off" placeholder="Confirm Password" />
+				<!--<input type="submit" name="submit" id="submit" value="Done" />-->
+				<button type="submit" name="submit" id="submit"> Done </button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form action="{{ url_for('login') }}" method="POST">
+				<h1>Sign in</h1>
+				<div class="social-container">
+					<!--<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+					<a href="{{ url_for('homepage') }}" class="social"><i class="fa fa-home"></i></a>
+				</div>
+				<span>or use your account</span>
+				<input type="email" name="txt_email" id="txt_email" required autocomplete="off" placeholder="Email" />
+				<input type="password" name="txt_pass" id="txt_pass" id="txt_pass" required="required"
+					autocomplete="off" placeholder="Password" />
+				<a href="#">Forgot your password?</a>
+				<button type="submit1" name="submit1" id="submit1"> Sign in </button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<a href="{{ url_for('login') }}" class="nav-brand"><img
+							src="{{ url_for('static', filename='assets-home/img/core-img/log3.png') }}" alt=""></a>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Register Here</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- partial -->
+	<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

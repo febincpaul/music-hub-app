@@ -1,0 +1,232 @@
+{% include "user/header.html" %}
+
+<style>
+    /* Chat container styles */
+    .chat-container {
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-family: sans-serif;
+    }
+
+    /* Chat header styles */
+    .chat-header {
+        background-color: #414755;
+        color: #fff;
+        padding: 10px;
+    }
+
+    /* Chat body styles */
+    .chat-body {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        padding: 10px;
+    }
+
+    /* Chat messages styles */
+    .chat-messages {
+        flex: 1;
+        overflow-y: scroll;
+    }
+
+    /* Style the scrollbar for the div */
+    .chat-messages::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 5px;
+        border: 1px solid #555;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+
+    /* Style for the sent messages */
+    .user-chat {
+        background-color: #ffcc99;
+        /* Set the background color for sent messages */
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the received messages */
+    .bot {
+        background-color: #f0f0f0;
+        /* Set the background color for received messages */
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 60%;
+        margin-right: auto;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+
+    /* Chat input styles */
+    .chat-input {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+    }
+
+    .chat-input button {
+        background-color: #f62d51;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto w-p50">
+                <h3 class="page-title">Music</h3>
+
+            </div>
+
+
+
+
+
+            <div class="right-title text-right w-170">
+                <span class="subheader_daterange font-weight-600" id="dashboard_daterangepicker">
+                    <span class="subheader_daterange-label">
+                        <span class="subheader_daterange-title" id="currentDate"></span>
+                        <span class="subheader_daterange-date text-primary" id="currentTime"></span>
+                    </span>
+                </span>
+            </div>
+
+            <script>
+                // Get the current system date and time
+                var currentDate = new Date();
+
+                // Format the date as desired
+                var formattedDate = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                // Format the time as desired
+                var formattedTime = currentDate.toLocaleTimeString('en-US');
+
+                // Update the placeholders with the current date and time
+                document.getElementById('currentDate').textContent = '' + formattedDate;
+            </script>
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class=" col-md-6">
+                    <img src="{{ url_for('video_feed') }}" style="height: 100%;">
+                </div>
+                <div class=" col-md-6">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h4 style="color: white;">Chatbot</h4>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-messages">
+                                <!-- Chat messages will be inserted here -->
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="msg" placeholder="Type your message...">
+                                <button id="send" onclick="response()">Send</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+</div>
+
+
+
+{% include "user/footer.html" %}
+
+
+<script>
+    const chatInput = document.querySelector('.chat-input input');
+    const chatButton = document.querySelector('.chat-input button');
+    const chatMessages = document.querySelector('.chat-messages');
+
+    function addChatMessage(text, sender) {
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('chat-message-container');
+
+        const message = document.createElement('div');
+        message.classList.add('chat-message');
+        message.classList.add(sender);
+
+        const messageText = document.createTextNode(text);
+        message.appendChild(messageText);
+
+        messageContainer.appendChild(message);
+        chatMessages.appendChild(messageContainer);
+
+        // Scroll to bottom of message container
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function response() {
+        const message = chatInput.value;
+        chatInput.value = ""
+        addChatMessage(message, 'user');
+
+        $.ajax({
+            url: '/chat2',
+            type: 'POST',
+            data: { message: message },
+            success: function (response) {
+                console.log(response);
+                if (response == '/result') {
+                    window.location.replace(response)
+                } else {
+                    addChatMessage(response, 'bot');
+
+                }
+            },
+            error: function (error) {
+                // Handle the error
+                console.log(error);
+            }
+        });
+
+
+    }
+</script>

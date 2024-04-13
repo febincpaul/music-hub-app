@@ -1,0 +1,96 @@
+{% include "admin/header.html" %}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto w-p50">
+                <h3 class="page-title">Music</h3>
+
+            </div>
+
+
+
+
+            <div class="right-title text-right w-170">
+                <span class="subheader_daterange font-weight-600" id="dashboard_daterangepicker">
+                    <span class="subheader_daterange-label">
+                        <span class="subheader_daterange-title" id="currentDate"></span>
+                        <span class="subheader_daterange-date text-primary" id="currentTime"></span>
+                    </span>
+                </span>
+            </div>
+
+            <script>
+                // Get the current system date and time
+                var currentDate = new Date();
+
+                // Format the date as desired
+                var formattedDate = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                // Format the time as desired
+                var formattedTime = currentDate.toLocaleTimeString('en-US');
+
+                // Update the placeholders with the current date and time
+                document.getElementById('currentDate').textContent = '' + formattedDate;
+            </script>
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h4 class="box-title">Add Music</h4>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" class="form-element" method="post" action="{{ url_for('admin_music') }}">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter music title">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Music File</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block text-red"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Thumbnail</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block text-red"></p>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</div>
+{% include "admin/footer.html" %}
+
+<script
+    src="{{ url_for('static', filename='assets-user/assets/vendor_components/datatable/datatables.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#users').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>

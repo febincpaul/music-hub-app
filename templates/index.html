@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Hompage of Music Hub</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets-home/img/core-img/favicon.ico') }}">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets-home/css/style.css') }}">
+
+    <!-- <style>
+        .white-text {
+            color: white;
+        }
+    </style> -->
+
+</head>
+
+
+<body>
+    <!-- Preloader -->
+    <!-- <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> -->
+
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='assets-home/img/core-img/logo3.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="{{ url_for('homepage') }}" class="nav-brand"><img
+                                src="{{ url_for('static', filename='assets-home/img/core-img/logo.png') }}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <!-- <ul> -->
+                                <!-- <li><a href="index.html">Home</a></li>
+                                    <li><a href="albums-store.html">Albums</a></li> -->
+                                <!-- <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="albums-store.html">Albums</a></li>
+                                            <li><a href="event.html">Events</a></li>
+                                            <li><a href="blog.html">News</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="#">Dropdown</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a>
+                                                        <ul class="dropdown">
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li> -->
+                                <!-- <li><a href="event.html">Events</a></li>
+                                    <li><a href="blog.html">News</a></li>
+                                    <li><a href="contact.html">Contact</a></li> -->
+                                <!-- </ul> -->
+
+                                <!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    <div class="ghost">
+                                        <a href="{{ url_for('login') }}" id="loginBtn"
+                                            style=" font-size: 110%;background-color: rgb(253, 253, 254);padding: 10px;border-radius: 20px;font-weight: bold; color: rgb(0, 0, 0); ">
+                                            Login / Register
+                                        </a>
+                                    </div>
+
+                                    <!-- Cart Button -->
+                                    <!-- <div class="cart-btn">
+                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <!-- Slide Img -->
+                <div class="slide-img bg-img"
+                    style="background-image: url({{ url_for('static', filename='assets-home/img/bg-img/bg-1.jpg') }});">
+                </div>
+                <!-- Slide Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-slides-content text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">Feel Your Emotions with</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Music-Hub<span>Music-Hub</span>
+                                </h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="{{ url_for('login') }}"
+                                    id="loginBtn" class="btn oneMusic-btn mt-50">Login Now <i
+                                        class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <!-- Slide Img -->
+                <div class="slide-img bg-img"
+                    style="background-image: url({{ url_for('static', filename='assets-home//img/bg-img/bg-4.jpg') }});">
+                </div>
+                <!-- Slide Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-slides-content text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">Welcome to</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Music-Hub <span>Music-Hub</span></h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="{{ url_for('login') }}"
+                                    id="loginBtn" class="btn oneMusic-btn mt-50">Register Now <i
+                                        class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Latest Albums Area Start ##### -->
+    <section class="latest-albums-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading style-2">
+                        <a href="{{ url_for('homepage') }}" class="nav-brand"><img
+                                src="{{ url_for('static', filename='assets-home/img/core-img/logo3.png') }}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="ablums-text text-center mb-70">
+                        <p>Music has the power to transform societies and individuals alike, serving as a universal
+                            language that transcends barriers of culture, language, and geography. It brings people
+                            together, fostering empathy, understanding, and connection. Through its melodies, rhythms,
+                            and lyrics, music has the ability to evoke emotions, inspire change, and promote social
+                            harmony. Whether in times of celebration, mourning, protest, or reflection, music plays a
+                            vital role in shaping our world and promoting positive change.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Single Album -->
+                    <div class="album"
+                        style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <img src="{{ url_for('static', filename='assets-home/img/bg-img/a2.jpg') }}" alt=""
+                            style="max-width: 200px;">
+                        <div class="album-info">
+                            <a href="https://www.instagram.com/febin.c.paul/">
+                                <h5>Febin C Paul</h5>
+                            </a>
+                            <p>Founder of <b>Music-Hub,</b> Since:- <b>2021</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- ##### Latest Albums Area End ##### -->
+
+    <!-- ##### Featured Artist Area Start ##### -->
+    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed"
+        style="background-image: url({{ url_for('static', filename='assets-home/img/bg-img/bg-4.jpg') }});">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-12 col-md-5 col-lg-4">
+                    <div class="featured-artist-thumb">
+                        <img src="{{ url_for('static', filename='assets-home/img/bg-img/b3.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 col-lg-8">
+                    <div class="featured-artist-content">
+                        <!-- Section Heading -->
+                        <div class="section-heading white text-left mb-30">
+                            <p>Feel Your Emotions</p>
+                            <h2>Music-Hub for you</h2>
+                        </div>
+                        <p>
+                            Music is a universal form of expression that utilizes sound organized in time. It
+                            encompasses a wide range of styles, genres, and cultural influences, serving purposes from
+                            entertainment to communication and ritualistic expression. From classical symphonies to
+                            contemporary pop hits, music engages emotions, stimulates imagination, and fosters cultural
+                            connections across the globe. It's a dynamic art form that continues to evolve, reflecting
+                            societal changes and individual creativity.</p>
+                        <!-- <div class="song-play-area">
+                            <div class="song-name">
+                                <p>01. Main Hit Song</p>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src="audio/dummy-audio.mp3">
+                            </audio>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Featured Artist Area End ##### -->
+
+
+
+
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-12 col-md-6">
+                    <a href="{{ url_for('homepage') }}"><img
+                            src="{{ url_for('static', filename='assets-home/img/core-img/logo.png') }}" alt=""></a>
+                    <p class="copywrite-text"><a
+                            href="https://www.instagram.com/febin.c.paul/"><!-- Link back to Febin can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                            template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                                href="https://www.instagram.com/febin.c.paul/" target="_blank">Febin C Paul</a>
+                            <!-- Link back to Febin can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Albums</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{{ url_for('static', filename='assets-home/js/jquery/jquery-2.2.4.min.js') }}"></script>
+    <!-- Popper js -->
+    <script src="{{ url_for('static', filename='assets-home/js/bootstrap/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ url_for('static', filename='assets-home/js/bootstrap/bootstrap.min.js') }}"></script>
+    <!-- All Plugins js -->
+    <script src="{{ url_for('static', filename='assets-home/js/plugins/plugins.js') }}"></script>
+    <!-- Active js -->
+    <script src="{{ url_for('static', filename='assets-home/js/active.js') }}"></script>
+</body>
+
+</html>

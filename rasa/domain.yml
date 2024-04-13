@@ -1,0 +1,58 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - sad
+  - happy
+  - neutral
+  - bot_challenge
+  - mood_great
+  - mood_unhappy
+    
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_ask_emotion
+  - utter_acknowledge_emotion
+  - utter_default
+  - utter_did_that_help
+  - utter_happy
+  - utter_iamabot
+  - utter_cheer_up
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a great day."
+  utter_ask_emotion:
+    - text: "Hi there! How are you feeling today? Sad, happy, or neutral?"
+  utter_acknowledge_emotion:
+    - text: "Got it, thanks for sharing."
+  utter_default:
+    - text: "I'm not sure I understand. Can you please rephrase?"
+  utter_did_that_help:
+    - text: "Did that help you?"
+  utter_happy:
+    - text: "Great! Keep it up!"
+  utter_iamabot:
+    - text: "Yes, I am a bot. How can I assist you?"
+  utter_cheer_up:
+    - text: "I'm sorry to hear that. Can I cheer you up in any way?"
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_text
+        intent: greet
+        role: entity
+
+templates:
+  utter_ask_name:
+    - text: "What's your name?"
+  utter_acknowledge_name:
+    - text: "Got it, {name}."

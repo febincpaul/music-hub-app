@@ -1,0 +1,11 @@
+flask
+opencv-python
+pandas
+tensorflow
+scikit-learn
+pillow
+scikit-image
+flask_caching
+redis
+mysql.connector
+nltk

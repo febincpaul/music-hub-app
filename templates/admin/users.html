@@ -1,0 +1,103 @@
+{% include "admin/header.html" %}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto w-p50">
+                <h3 class="page-title">Music</h3>
+
+            </div>
+
+
+
+
+            <div class="right-title text-right w-170">
+                <span class="subheader_daterange font-weight-600" id="dashboard_daterangepicker">
+                    <span class="subheader_daterange-label">
+                        <span class="subheader_daterange-title" id="currentDate"></span>
+                        <span class="subheader_daterange-date text-primary" id="currentTime"></span>
+                    </span>
+                </span>
+            </div>
+
+            <script>
+                // Get the current system date and time
+                var currentDate = new Date();
+
+                // Format the date as desired
+                var formattedDate = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                // Format the time as desired
+                var formattedTime = currentDate.toLocaleTimeString('en-US');
+
+                // Update the placeholders with the current date and time
+                document.getElementById('currentDate').textContent = '' + formattedDate;
+            </script>
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Users</h3>
+                <h6 class="box-subtitle">Details of users</h6>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table id="users" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in res %}
+                            <tr>
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+    </section>
+</div>
+{% include "admin/footer.html" %}
+
+<script
+    src="{{ url_for('static', filename='assets-user/assets/vendor_components/datatable/datatables.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#users').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
