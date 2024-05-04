@@ -5,6 +5,9 @@ WORKDIR /python-docker
 # Install system dependencies
 RUN apk add --no-cache gcc musl-dev libffi-dev mesa-gl
 
+# Create symbolic link to libGL.so.1
+RUN ln -s /usr/lib/libGLESv2.so.2 /usr/lib/libGL.so.1
+
 # Copy requirements and install dependencies
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
