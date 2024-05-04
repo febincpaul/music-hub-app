@@ -19,4 +19,4 @@ USER 10016
 
 # Expose port and set command
 EXPOSE 5000
-CMD [ "python", "app.py" ]
+ENTRYPOINT ["python", "app.py"]
