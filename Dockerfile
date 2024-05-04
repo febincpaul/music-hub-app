@@ -2,6 +2,9 @@ FROM python:3.9-alpine
 
 WORKDIR /python-docker
 
+# Install system dependencies
+RUN apk add --no-cache gcc musl-dev libffi-dev libgl1-mesa-glx
+
 # Copy requirements and install dependencies
 COPY requirements.txt requirements.txt
 RUN apk add --no-cache gcc musl-dev libffi-dev && \
