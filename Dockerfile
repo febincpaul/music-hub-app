@@ -3,10 +3,7 @@ FROM python:3.9-alpine
 WORKDIR /python-docker
 
 # Install system dependencies
-RUN apk add --no-cache gcc musl-dev libffi-dev mesa-gl
-
-# Copy libGL.so.1 to the expected location
-RUN cp /usr/lib/libGLESv2.so.2 /usr/lib/libGL.so.1
+RUN apt-get update &&   apt-get install -y python3-opencv
 
 # Copy requirements and install dependencies
 COPY requirements.txt requirements.txt
